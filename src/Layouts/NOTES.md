@@ -1,0 +1,1 @@
+1. Footer md sebelum sm dikit lagi bug

@@ -1,0 +1,45 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  theme: {
+    fontFamily: {
+      derivia: ["derivia"],
+      montserrat: ["montserrat"],
+      mulish: ["mulish"],
+      martel: ["martel"],
+    },
+    extend: {
+      colors: {
+        main: "#9A7058",
+        text: "#0F0F0F",
+      },
+      fontSize: {
+        h1: "2.986rem",
+        h2: "2.488rem",
+        h3: "2.074rem",
+        h4: "1.728rem",
+        h5: "1.44rem",
+        h6: "1.2rem",
+        body: "1rem",
+        small: "0.833rem",
+        "md-h1": "2.488rem",
+        "md-h2": "2.074rem",
+        "md-h3": "1.728rem",
+        "md-h4": "1.44rem",
+        "md-h5": "1.2rem",
+        "md-h6": "1rem",
+        "md-body": "0.9rem",
+        "md-small": "0.75rem",
+        "sm-h1": "2.074rem",
+        "sm-h2": "1.728rem",
+        "sm-h3": "1.44rem",
+        "sm-h4": "1.2rem",
+        "sm-h5": "1rem",
+        "sm-h6": "0.875rem",
+        "sm-body": "0.833rem",
+        "sm-small": "0.75rem",
+      },
+    },
+  },
+  plugins: [],
+};
