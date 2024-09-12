@@ -45,7 +45,7 @@ function FaqPage() {
           </div>
         </div>
         {/* Questions */}
-        <div className="w-4/5 mx-auto md:w-[40vw]">
+        <div className="my-10 md:my-0 w-4/5 mx-auto md:w-[40vw]">
           {faqs.map((faq, i) => {
             const isActive = activeAccordion === i;
             return (

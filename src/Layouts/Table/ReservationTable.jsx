@@ -52,12 +52,12 @@ const data = [
 function ReservationTable() {
   return (
     <div className="bg-[#F5F1EE] mt-28 mb-10 p-10 w-11/12 mx-auto">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between">
         <h5 className="uppercase text-sm-h5 md:text-md-h5 lg:text-h5 font-bold tracking-widest">
           reservation list
         </h5>
         {/* Search */}
-        <div class="flex items-center w-1/4 border border-[#505050] rounded-md p-3 gap-x-2 bg-transparent">
+        <div class="flex items-center w-full md:w-1/4 border border-[#505050] rounded-md p-3 gap-x-2 bg-transparent">
           <span class="text-gray-500 text-sm mr-2">
             <Search />
           </span>
@@ -68,8 +68,8 @@ function ReservationTable() {
           />
         </div>
       </div>
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
+      <div className="flex items-center justify-between mt-2 md:mt-0">
+        <div className="hidden md:flex items-center gap-4">
           <div className="space-y-4">
             <p className="uppercase text-[#505050] tracking-widest font-bold font-mulish">
               filter
@@ -98,9 +98,9 @@ function ReservationTable() {
           <button>
             <CSV />
           </button>
-          <button>
+          {/* <button className="hidden md:inline">
             <MainButton label="check in" />
-          </button>
+          </button> */}
         </div>
       </div>
       <div className="overflow-x-auto mt-4">

@@ -4,9 +4,9 @@ import { Longleft, Longright } from "../assets/Icons";
 
 function Testimony() {
   return (
-    <div className="bg-[#F5F1EE] flex flex-col lg:flex-row justify-around items-center p-10 lg:px-20 lg:py-10">
-      <img src={TestimonyImg} alt="testimony.png" className="w-[40vw]" />
-      <div className="w-[30vw] space-y-6 text-center">
+    <div className="bg-[#F5F1EE] flex flex-col md:flex-row justify-around items-center p-10 lg:px-20 lg:py-10">
+      <img src={TestimonyImg} alt="testimony.png" className="w-full md:w-[40vw]" />
+      <div className="mt-5 md:mt-0 md:w-[30vw] space-y-6 text-center">
         <p className="text-[#72726C] tracking-widest uppercase font-medium text-small">
           october 28, 2022
         </p>

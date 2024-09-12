@@ -17,30 +17,32 @@ import {
 import MainButton from "../Components/Buttons/MainButton";
 
 // SidebarItem Component
-const SidebarItem = ({ title, children, icon }) => {
+const SidebarItem = ({ title, children, icon, isCollapsed }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleItem = () => setIsOpen(!isOpen);
 
   return (
-    <div className="font-mulish">
+    <div className={`font-mulish ${isCollapsed ? "text-center" : ""}`}>
       <div
         className="flex items-center justify-between p-4 cursor-pointer bg-gray-100 border-b border-gray-300"
         onClick={toggleItem}
       >
         <div className="flex items-center gap-4">
           {icon}
-          <span>{title}</span>
+          {!isCollapsed && <span>{title}</span>}
         </div>
-        <span
-          className={`transition-transform duration-100 ${
-            isOpen ? "-rotate-180" : "rotate-0"
-          }`}
-        >
-          <ArrowDown color="#505050" />
-        </span>
+        {!isCollapsed && (
+          <span
+            className={`transition-transform duration-100 ${
+              isOpen ? "-rotate-180" : "rotate-0"
+            }`}
+          >
+            <ArrowDown color="#505050" />
+          </span>
+        )}
       </div>
-      {isOpen && <div className="p-4">{children}</div>}
+      {isOpen && !isCollapsed && <div className="p-4">{children}</div>}
     </div>
   );
 };
@@ -95,17 +97,51 @@ const ToggleSwitch = ({ label, checked, onChange }) => (
 
 // Main SidebarTemplate Component
 const SidebarTemplate = () => {
-  const [isCountdownVisible, setIsCountdownVisible] = useState(false);
-  const [isRSVPVisible, setIsRSVPVisible] = useState(false); // Example for another toggle
+  const [isCollapsed, setIsCollapsed] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsCollapsed(!isCollapsed);
+  };
 
   return (
-    <div className="bg-white w-full md:w-1/4 border-r border-gray-300 md:fixed top-0 right-0 bottom-0 flex flex-col justify-between overflow-y-scroll">
+    <div
+      className={`bg-white border-r border-gray-300 top-0 bottom-0 right-0 flex flex-col justify-between overflow-y-scroll overflow-x-hidden transition-width duration-300 ${
+        isCollapsed ? "w-[10%] md:w-[5%] overflow-y-hidden" : "w-1/2 md:w-1/4"
+      } fixed`}
+    >
       <div>
-        <SidebarItem title="Kalimat" icon={<MDI_Love />}>
+        <div className="w-full py-5 px-4 flex justify-between items-center">
+          <h1
+            className={`text-h6 uppercase font-bold ${
+              isCollapsed ? "hidden" : ""
+            }`}
+          >
+            Edit Undangan
+          </h1>
+          <button
+            className="flex items-center justify-between uppercase font-medium bg-main px-2 py-1 rounded-md"
+            onClick={toggleSidebar}
+          >
+            <h6 className={`${isCollapsed ? "hidden" : "text-white"}`}>Hide</h6>
+            <div className={`${isCollapsed ? "rotate-90" : "-rotate-90"}`}>
+              <ArrowDown color="white" />
+            </div>
+          </button>
+        </div>
+
+        <SidebarItem
+          title="Kalimat"
+          icon={<MDI_Love />}
+          isCollapsed={isCollapsed}
+        >
           <TextAreaInput label="Text Pembuka" placeholder="Text Pembuka" />
         </SidebarItem>
 
-        <SidebarItem title="Detail Mempelai Pria" icon={<Man />}>
+        <SidebarItem
+          title="Detail Mempelai Pria"
+          icon={<Man />}
+          isCollapsed={isCollapsed}
+        >
           <TextInput
             label="Nama lengkap mempelai pria"
             placeholder="Text Pembuka"
@@ -117,7 +153,11 @@ const SidebarTemplate = () => {
           <TextInput label="Username Instagram" placeholder="@cakrajaya" />
         </SidebarItem>
 
-        <SidebarItem title="Detail Mempelai Wanita" icon={<Woman />}>
+        <SidebarItem
+          title="Detail Mempelai Wanita"
+          icon={<Woman />}
+          isCollapsed={isCollapsed}
+        >
           <TextInput
             label="Nama lengkap mempelai wanita"
             placeholder="Text Pembuka"
@@ -129,7 +169,11 @@ const SidebarTemplate = () => {
           <TextInput label="Username Instagram" placeholder="@mayasaja" />
         </SidebarItem>
 
-        <SidebarItem title="Tanggal & Lokasi Acara" icon={<Date />}>
+        <SidebarItem
+          title="Tanggal & Lokasi Acara"
+          icon={<Date />}
+          isCollapsed={isCollapsed}
+        >
           <TextInput label="Nama Acara" placeholder="EG: Pernikahan" />
           <TextAreaInput label="Description" placeholder="Text Pembuka" />
           <TextInput label="Mulai Pada" type="date" />
@@ -140,30 +184,46 @@ const SidebarTemplate = () => {
           <TextAreaInput label="Alamat" />
         </SidebarItem>
 
-        <SidebarItem title="Images & Music" icon={<Camera />} />
+        <SidebarItem
+          title="Images & Music"
+          icon={<Camera />}
+          isCollapsed={isCollapsed}
+        />
 
-        <SidebarItem title="Countdown" icon={<CountDown />}>
+        <SidebarItem
+          title="Countdown"
+          icon={<CountDown />}
+          isCollapsed={isCollapsed}
+        >
           <ToggleSwitch
             label="Munculkan Countdown"
-            checked={isCountdownVisible}
-            onChange={() => setIsCountdownVisible(!isCountdownVisible)}
+            checked={false}
+            onChange={() => {}}
           />
         </SidebarItem>
 
-        <SidebarItem title="RSVP" icon={<Reservation />}>
+        <SidebarItem
+          title="RSVP"
+          icon={<Reservation />}
+          isCollapsed={isCollapsed}
+        >
           <ToggleSwitch
             label="Munculkan RSVP tanggapan"
-            checked={isRSVPVisible}
-            onChange={() => setIsRSVPVisible(!isRSVPVisible)}
+            checked={false}
+            onChange={() => {}}
           />
         </SidebarItem>
 
-        <SidebarItem title="Wallet" icon={<Wallet />}>
+        <SidebarItem title="Wallet" icon={<Wallet />} isCollapsed={isCollapsed}>
           <TextInput label="Bank Name" placeholder="BCA" />
           <TextInput label="Nomor Rekening" type="number" />
           <TextInput label="Nama Rekening" />
         </SidebarItem>
-        <SidebarItem title="Advanced" icon={<DevMode />}>
+        <SidebarItem
+          title="Advanced"
+          icon={<DevMode />}
+          isCollapsed={isCollapsed}
+        >
           <TextAreaInput label="CSS" />
         </SidebarItem>
       </div>

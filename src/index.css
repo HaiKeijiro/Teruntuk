@@ -12,3 +12,22 @@
 p {
   @apply font-martel;
 }
+
+/* Hide spinners in input number */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.bg-form {
+  background-image: url(assets/templates/preview/main/bgform.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.bg-footer {
+  background-image: url(assets/templates/preview/main/bgfooter.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}

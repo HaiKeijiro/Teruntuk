@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import DashboardImage from "../../assets/template/sorliene/preview.png";
+import DashboardImage from "../../assets/templates/sorliene/preview.png";
 import { DotsMenu, Trash } from "../../assets/Icons";
 import EditButton from "../Buttons/EditButton";
 import MainButton from "../Buttons/MainButton";

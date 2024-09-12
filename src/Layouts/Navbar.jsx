@@ -9,6 +9,9 @@ import { BurgerMenu, Logo, User } from "../assets/Icons";
 import LoginModal from "./Modal/LoginModal";
 import RegisterModal from "./Modal/RegisterModal";
 
+// Navbar Menu
+import NavbarMenu from "./NavbarMenu";
+
 // Hook
 import useModal from "../Hooks/useModal";
 
@@ -60,6 +63,12 @@ function Navbar({ textColor = "black", icon }) {
     };
   }, []);
 
+  // Navbar Manu (sm - md)
+  const [isNavbarMenuOpen, setIsNavbarMenuOpen] = useState(false);
+  const handleNavbarMenu = () => {
+    setIsNavbarMenuOpen(!isNavbarMenuOpen);
+  };
+
   return (
     <nav
       className={`fixed z-50 top-0 left-0 right-0 mx-auto flex items-center justify-between px-4 py-3 md:p-8 lg:px-20 lg:py-8 uppercase font-mulish ${
@@ -68,11 +77,22 @@ function Navbar({ textColor = "black", icon }) {
     >
       {/* Logo */}
       <div className="flex items-center gap-x-4 lg:flex-shrink-0">
-        <div className="inline lg:hidden">
-          <BurgerMenu />
-        </div>
+        <button
+          className="inline lg:hidden"
+          onClick={() => {
+            openModal("navbarMenu");
+            handleNavbarMenu();
+          }}
+        >
+          <BurgerMenu color={isScrolled ? "black" : "white"} />
+        </button>
         <Logo iconColor={isScrolled ? "black" : icon} />
       </div>
+
+      {/* Navbar pop up */}
+      {isModalOpen("navbarMenu") && (
+        <NavbarMenu isOpen={isModalOpen} onClose={closeModal} />
+      )}
 
       {/* Nav Links */}
       <ul className="hidden lg:flex gap-x-10 absolute left-1/2 transform -translate-x-1/2">

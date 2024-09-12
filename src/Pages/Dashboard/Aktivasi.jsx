@@ -4,7 +4,7 @@ import Banner from "../../Layouts/Banner";
 import Photos from "../../Layouts/Photos";
 import Footer from "../../Layouts/Footer";
 
-import PreviewAlison from "../../assets/template/alison/preview.png";
+import PreviewAlison from "../../assets/templates/alison/preview.png";
 import { Copy, Gallery } from "../../assets/Icons";
 import MainButton from "../../Components/Buttons/MainButton";
 
@@ -24,7 +24,7 @@ function Aktivasi() {
       <Banner title="pembayaran" desc="" />
 
       {/* Pembayaran */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 lg:items-start lg:gap-10 lg:py-20 lg:px-52">
+      <div className="grid grid-cols-1 lg:grid-cols-2 lg:items-start lg:gap-10 lg:py-20 px-20 lg:px-52">
         <div className="grid">
           <div className="bg-[#f7f7f7] p-20 m-auto">
             <img

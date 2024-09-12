@@ -1,8 +1,8 @@
-export function Logo({ iconColor = "white" }) {
+export function Logo({ iconColor = "white", w = "144", h = "26" }) {
   return (
     <svg
-      width="144"
-      height="26"
+      width={w}
+      height={h}
       viewBox="0 0 144 26"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -86,7 +86,7 @@ export function Close() {
   );
 }
 
-export function StrokeClose() {
+export function StrokeClose({ color = "#72726C" }) {
   return (
     <svg
       width="20"
@@ -99,13 +99,13 @@ export function StrokeClose() {
         fillRule="evenodd"
         clipRule="evenodd"
         d="M19.6996 0.300403C20.1001 0.700941 20.1001 1.35034 19.6996 1.75088L1.75088 19.6996C1.35034 20.1001 0.700941 20.1001 0.300403 19.6996C-0.100134 19.2991 -0.100134 18.6497 0.300403 18.2491L18.2491 0.300403C18.6497 -0.100134 19.2991 -0.100134 19.6996 0.300403Z"
-        fill="#72726C"
+        fill={color}
       />
       <path
         fillRule="evenodd"
         clipRule="evenodd"
         d="M0.300403 0.300403C0.700941 -0.100134 1.35034 -0.100134 1.75088 0.300403L19.6996 18.2491C20.1001 18.6497 20.1001 19.2991 19.6996 19.6996C19.2991 20.1001 18.6497 20.1001 18.2491 19.6996L0.300403 1.75088C-0.100134 1.35034 -0.100134 0.700941 0.300403 0.300403Z"
-        fill="#72726C"
+        fill={color}
       />
     </svg>
   );
@@ -699,11 +699,11 @@ export function Longright() {
   );
 }
 
-export function Instagram() {
+export function Instagram({ w = "30", h = "30" }) {
   return (
     <svg
-      width="30"
-      height="30"
+      width={w}
+      height={h}
       viewBox="0 0 30 30"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -733,11 +733,11 @@ export function Instagram() {
   );
 }
 
-export function Facebook() {
+export function Facebook({ w = "30", h = "30" }) {
   return (
     <svg
-      width="30"
-      height="30"
+      width={w}
+      height={h}
       viewBox="0 0 30 30"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -750,11 +750,11 @@ export function Facebook() {
   );
 }
 
-export function Twitter() {
+export function Twitter({ w = "30", h = "30" }) {
   return (
     <svg
-      width="30"
-      height="30"
+      width={w}
+      height={h}
       viewBox="0 0 30 30"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -1509,14 +1509,14 @@ export function Copy() {
       <path
         d="M16.6667 7.5H9.16667C8.24619 7.5 7.5 8.24619 7.5 9.16667V16.6667C7.5 17.5871 8.24619 18.3333 9.16667 18.3333H16.6667C17.5871 18.3333 18.3333 17.5871 18.3333 16.6667V9.16667C18.3333 8.24619 17.5871 7.5 16.6667 7.5Z"
         stroke="black"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M4.16797 12.5013H3.33464C2.89261 12.5013 2.46868 12.3257 2.15612 12.0131C1.84356 11.7006 1.66797 11.2767 1.66797 10.8346V3.33464C1.66797 2.89261 1.84356 2.46868 2.15612 2.15612C2.46868 1.84356 2.89261 1.66797 3.33464 1.66797H10.8346C11.2767 1.66797 11.7006 1.84356 12.0131 2.15612C12.3257 2.46868 12.5013 2.89261 12.5013 3.33464V4.16797"
         stroke="black"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -1562,9 +1562,9 @@ export function BurgerMenu({ color = "black" }) {
       <path
         d="M3 6H21M3 12H21M3 18H21"
         stroke={color}
-        stroke-width="2.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

@@ -48,7 +48,8 @@ dengan tema acaramu."
             </select>
           </div>
         </div>
-        <div className="grid grid-cols-[repeat(auto-fit,_minmax(265px,_1fr))] gap-5 mt-8">
+        {/* [repeat(auto-fit,_minmax(265px,_1fr))] */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-8">
           <TemplateCard />
           <TemplateCard />
           <TemplateCard />

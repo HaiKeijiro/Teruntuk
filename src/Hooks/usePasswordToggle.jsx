@@ -4,6 +4,7 @@ const usePasswordToggle = (resetPasswordField) => {
   // Initialize state with the names of the fields you want to manage
   const [visibility, setVisibility] = useState({
     password: true,
+    newPassword: true,
     confirmPassword: true,
   });
 

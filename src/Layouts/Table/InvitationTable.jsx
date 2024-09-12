@@ -55,12 +55,12 @@ function InvitationTable() {
 
   return (
     <div className="bg-[#F5F1EE] relative mt-28 mb-10 p-10 w-11/12 mx-auto">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between">
         <h5 className="uppercase text-sm-h5 md:text-md-h5 lg:text-h5 font-bold tracking-widest">
           invitation list
         </h5>
         {/* Search */}
-        <div className="flex items-center w-1/4 border border-[#505050] rounded-md p-3 gap-x-2 bg-transparent">
+        <div className="flex items-center w-full md:w-1/4 border border-[#505050] rounded-md p-3 gap-x-2 bg-transparent">
           <span className="text-gray-500 text-sm mr-2">
             <Search />
           </span>
@@ -72,7 +72,7 @@ function InvitationTable() {
         </div>
       </div>
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-4">
           <div className="space-y-4">
             <p className="uppercase text-[#505050] tracking-widest font-bold font-mulish">
               filter
@@ -94,7 +94,7 @@ function InvitationTable() {
             </select>
           </div>
         </div>
-        <div className="flex items-center gap-x-4">
+        <div className="flex items-center gap-x-4 mt-2 md:mt-0">
           <button onClick={() => setIsImportModalOpen(true)}>
             <Import color="#505050" />
           </button>

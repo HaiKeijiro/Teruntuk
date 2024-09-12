@@ -12,7 +12,7 @@ const NavigationButtons = ({ currentStep, setCurrentStep }) => (
     <Button
       onClick={() => setCurrentStep(Math.min(currentStep + 1, 2))}
       disabled={currentStep === 2}
-      className="bg-blue-500 text-white"
+      className="bg-main text-white"
     >
       Next
     </Button>

@@ -7,13 +7,11 @@ function Footer() {
     // Parent div
     <div>
       {/* Main footer */}
-      <div className="bg-[#F5F1EE] w-full py-10 px-20 flex items-center justify-between">
-
-
+      <div className="bg-[#F5F1EE] w-full py-5 lg:py-10 lg:px-20 flex flex-col text-center md:text-start md:flex-row items-center lg:justify-between">
         {/* Left */}
         <div className="w-auto flex flex-col gap-y-8 gap-x-6">
           <div className="space-y-4">
-            <h6 className="text-h6 uppercase tracking-widest">Halaman</h6>
+            <h6 className="text-sm-h6 md:text-md-h6 lg:text-h6 uppercase tracking-widest">Halaman</h6>
             <div className="flex flex-col justify-center gap-y-2">
               <NavLink to="/" className="hover:text-gray-700">
                 Home
@@ -24,7 +22,7 @@ function Footer() {
             </div>
           </div>
           <div className="space-y-4">
-            <h6 className="text-h6 uppercase tracking-widest">Template</h6>
+            <h6 className="text-sm-h6 md:text-md-h6 lg:text-h6 uppercase tracking-widest">Template</h6>
             <div className="flex flex-col gap-y-2">
               <NavLink to="/template-undangan" className="hover:text-gray-700">
                 Template Undangan
@@ -34,8 +32,8 @@ function Footer() {
         </div>
 
         {/* Logo */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 w-full lg:w-2/5 border border-x-[#ABABAB] border-y-0 flex justify-center items-center">
-          <div className="">
+        <div className="hidden lg:absolute left-1/2 transform -translate-x-1/2 w-full md:w-2/5 lg:border-x border-[#ABABAB] md:flex justify-center items-center">
+          <div className="w-full">
             <svg
               width="219"
               height="79"
@@ -55,15 +53,15 @@ function Footer() {
         {/* Right */}
         <div className="w-auto flex flex-col gap-y-8">
           <div className="space-y-4">
-            <h6 className="text-h6 uppercase tracking-widest">Social Media</h6>
-            <div className="flex space-x-4">
+            <h6 className="text-sm-h6 md:text-md-h6 lg:text-h6 uppercase tracking-widest">Social Media</h6>
+            <div className="flex items-center justify-center lg:justify-start space-x-4">
               <Facebook className="w-6 h-6 text-gray-700 hover:text-gray-900" />
               <Instagram className="w-6 h-6 text-gray-700 hover:text-gray-900" />
               <Twitter className="w-6 h-6 text-gray-700 hover:text-gray-900" />
             </div>
           </div>
           <div className="space-y-4">
-            <h6 className="text-h6 uppercase tracking-widest">
+            <h6 className="text-sm-h6 md:text-md-h6 lg:text-h6 uppercase tracking-widest">
               Subscribe <br /> Newsletter
             </h6>
             <input
@@ -73,7 +71,6 @@ function Footer() {
             />
           </div>
         </div>
-
       </div>
 
       {/* Footer */}

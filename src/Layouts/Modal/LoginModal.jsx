@@ -16,7 +16,7 @@ function LoginModal({ isOpen, onClose, resetPasswordField }) {
 
   return (
     <div className="fixed inset-0 bg-[#0F0F0F]/40 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg shadow-lg w-2/5 p-8">
+      <div className="bg-white rounded-lg shadow-lg w-4/5 p-4 md:w-2/5 md:p-8">
         {/* Close button */}
         <div className="h-fit flex justify-end">
           <button onClick={onClose}>
@@ -78,9 +78,9 @@ function LoginModal({ isOpen, onClose, resetPasswordField }) {
           </div>
 
           {/* Button */}
-          <div className="mt-6">
+          <button className="mt-6">
             <MainButton label={"sign in"} width="full" />
-          </div>
+          </button>
 
           {/* Create account */}
           <p className="text-small text-center mt-2">

@@ -6,7 +6,7 @@ import Photos from "../../Layouts/Photos";
 import Footer from "../../Layouts/Footer";
 import AddCard from "../../Components/Cards/AddCard";
 import DashboardCard from "../../Components/Cards/DashboardCard";
-import DashboardImage from "../../assets/template/sorliene/preview.png";
+import DashboardImage from "../../assets/templates/sorliene/preview.png";
 import { DotsMenu } from "../../assets/Icons";
 import MainButton from "../../Components/Buttons/MainButton";
 import OptionButton from "../../Components/Buttons/OptionButton";
@@ -53,7 +53,8 @@ function index() {
             </select>
           </div>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-[repeat(auto-fit,_minmax(360px,_1fr))] gap-10 py-10">
+        {/* [repeat(auto-fit,_minmax(360px,_1fr))] */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 py-10">
           <AddCard />
           <DashboardCard />
           <DashboardCard />
@@ -64,7 +65,7 @@ function index() {
       <Testimony />
 
       {/* Photos */}
-      {/* <Photos /> */}
+      <Photos />
 
       {/* Footer */}
       <Footer />

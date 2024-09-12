@@ -11,6 +11,7 @@ import InvitationList from "./Pages/Dashboard/InvitationList";
 import ReservationList from "./Pages/Dashboard/ReservationList";
 import EditUndangan from "./Pages/Dashboard/EditUndangan";
 import Aktivasi from "./Pages/Dashboard/Aktivasi";
+import ProfilePage from "./Pages/ProfilePage";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         />
         <Route path="dashboard/edit-undangan" element={<EditUndangan />} />
         <Route path="dashboard/aktivasi" element={<Aktivasi />} />
+        <Route path="profile" element={<ProfilePage />} />
       </Routes>
     </>
   );

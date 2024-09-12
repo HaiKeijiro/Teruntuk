@@ -1,17 +1,17 @@
 import React from "react";
 
 // Images
-import PreviewAlison from "../../assets/template/alison/preview.png";
+import PreviewAlison from "../../assets/templates/alison/preview.png";
 import MainButton from "../Buttons/MainButton";
 import { HoverEye } from "../../assets/Icons";
 import OptionButton from "../Buttons/OptionButton";
-// import PreviewBliss from "../../assets/template/bliss/preview.png";
-// import PreviewCharm from "../../assets/template/charm/preview.png";
-// import PreviewCharm2 from "../../assets/template/charm2/preview.png"
-// import PreviewEnchant from "../../assets/template/enchant/preview.png";
-// import PreviewEvermore from "../../assets/template/evermore/preview.png";
-// import PreviewSorliene from "../../assets/template/sorliene/preview.png";
-// import PreviewSorlieneThumb from "../../assets/template/sorliene/thumb.png";
+// import PreviewBliss from "../../assets/templates/bliss/preview.png";
+// import PreviewCharm from "../../assets/templates/charm/preview.png";
+// import PreviewCharm2 from "../../assets/templates/charm2/preview.png"
+// import PreviewEnchant from "../../assets/templates/enchant/preview.png";
+// import PreviewEvermore from "../../assets/templates/evermore/preview.png";
+// import PreviewSorliene from "../../assets/templates/sorliene/preview.png";
+// import PreviewSorlieneThumb from "../../assets/templates/sorliene/thumb.png";
 
 function TemplateCard() {
   return (
