@@ -1,15 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function MainButton({ label, width = "fit", onclick, directTo }) {
+function MainButton({ label, width, onclick, directTo }) {
   return (
-    <Link
-      to={directTo}
-      className={`w-${width} h-fit px-5 py-3 bg-main text-white rounded-md tracking-widest uppercase text-center`}
+    <button
+      className={`w-${
+        width === "full" ? "full" : "fit"
+      } h-fit px-5 py-3 bg-main text-white rounded-md tracking-widest uppercase text-center`}
       onClick={onclick}
     >
-      {label}
-    </Link>
+      <Link to={directTo}>{label}</Link>
+    </button>
   );
 }
 

@@ -2,8 +2,8 @@ import React from "react";
 import { Logo, StrokeClose } from "../assets/Icons";
 import { NavLink } from "react-router-dom";
 import useModal from "../Hooks/useModal";
-import LoginModal from "./Modal/LoginModal";
-import RegisterModal from "./Modal/RegisterModal";
+import LoginModal from "../Layouts/Modal/Auth/LoginModal";
+import RegisterModal from "../Layouts/Modal/Auth/RegisterModal";
 
 function NavbarMenu({ isOpen, onClose }) {
   if (!isOpen) return null;

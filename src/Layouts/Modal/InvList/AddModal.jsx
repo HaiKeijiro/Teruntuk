@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { StrokeClose } from "../../assets/Icons";
-import MainButton from "../../Components/Buttons/MainButton";
+import { StrokeClose } from "../../../assets/Icons";
+import MainButton from "../../../Components/Buttons/MainButton";
 
 const AddModal = ({ closeModal }) => {
   return ReactDOM.createPortal(
@@ -40,9 +40,9 @@ const AddModal = ({ closeModal }) => {
               placeholder="081 782103u1u82"
             />
           </div>
-          <button className="mt-6">
+          <div className="mt-6">
             <MainButton label="add invitation" />
-          </button>
+          </div>
         </div>
       </div>
     </div>,

@@ -6,8 +6,8 @@ import FaqPage from "../Pages/FaqPage";
 import { BurgerMenu, Logo, User } from "../assets/Icons";
 
 // Modal
-import LoginModal from "./Modal/LoginModal";
-import RegisterModal from "./Modal/RegisterModal";
+import LoginModal from "../Layouts/Modal/Auth/LoginModal";
+import RegisterModal from "../Layouts/Modal/Auth/RegisterModal";
 
 // Navbar Menu
 import NavbarMenu from "./NavbarMenu";
@@ -19,7 +19,7 @@ import MainButton from "../Components/Buttons/MainButton";
 import { useEffect, useState, useRef } from "react";
 
 function Navbar({ textColor = "black", icon }) {
-  const isLoggedIn = true;
+  const isLoggedIn = false;
 
   // Scroll effect
   const [isScrolled, setIsScrolled] = useState(false);

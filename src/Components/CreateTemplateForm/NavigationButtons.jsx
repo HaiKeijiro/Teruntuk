@@ -7,6 +7,7 @@ const NavigationButtons = ({
   onNext,
   onSubmit,
   isValid,
+  isSubmitting, // Add this to handle button states while submitting
 }) => {
   const renderButtons = () => {
     switch (currentStep) {
@@ -18,7 +19,9 @@ const NavigationButtons = ({
             </Button>
             <Button
               onClick={onNext}
-              className={!isValid ? "bg-main/50 text-white" : "bg-main text-white"}
+              className={
+                !isValid ? "bg-main/50 text-white" : "bg-main text-white"
+              }
               disabled={!isValid}
             >
               Next
@@ -49,7 +52,7 @@ const NavigationButtons = ({
             <Button
               className="bg-main text-white"
               onClick={onSubmit}
-              disabled={!isValid}
+              disabled={!isValid || isSubmitting} // Disable if invalid or submitting
             >
               Submit
             </Button>

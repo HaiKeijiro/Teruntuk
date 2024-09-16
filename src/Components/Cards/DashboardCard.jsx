@@ -17,6 +17,8 @@ function DashboardCard() {
     setMenuClicked(!menuClicked);
   };
 
+  const undanganAktif = false;
+
   return (
     <div className="">
       <div className="max-h-[510px] py-20 grid">
@@ -30,21 +32,35 @@ function DashboardCard() {
         <div className="flex items-center justify-between pb-5">
           <label
             htmlFor="active?"
-            className="capitalize bg-[#0F0F0F]/30 text-white text-small px-4 py-1 rounded-md"
+            className={`capitalize ${
+              undanganAktif ? "bg-[#0F0F0F]" : "bg-[#0F0F0F]/30"
+            } text-white text-small px-4 py-1 rounded-md`}
           >
-            belum aktif
+            {undanganAktif ? "aktif" : "belum aktif"}
           </label>
           <button className="cursor-pointer" onClick={handleMenu}>
             <DotsMenu />
           </button>
         </div>
         <div className="">
-          <h5 className="text-sm-h5 md:text-md-h5 lg:text-h5 font-martel">Michael</h5>
+          <h5 className="text-sm-h5 md:text-md-h5 lg:text-h5 font-martel">
+            Michael
+          </h5>
           <p>@incognito.com</p>
         </div>
         <div className="w-full h-full mt-6 flex gap-x-4">
-          <EditButton label="edit" width="full" />
-          <MainButton label="aktifkan" width="full" directTo="/dashboard/aktivasi" />
+          {undanganAktif ? (
+            <EditButton label="edit" width="full" justify="center" />
+          ) : (
+            <>
+              <EditButton label="edit" width="full" />
+              <MainButton
+                label="aktifkan"
+                width="full"
+                directTo="/dashboard/aktivasi"
+              />
+            </>
+          )}
         </div>
 
         {/* Menu */}
@@ -72,9 +88,9 @@ function DashboardCard() {
                 Kamu yakin ingin menghapus template ini?
               </p>
               <div className="flex gap-4 mt-2">
-                <button onClick={() => setDeleteModal(false)}>
+                <div onClick={() => setDeleteModal(false)}>
                   <MainButton label="cancel" />
-                </button>
+                </div>
                 <button>
                   <OptionButton label="hapus" />
                 </button>

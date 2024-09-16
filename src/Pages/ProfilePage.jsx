@@ -51,9 +51,9 @@ function ProfilePage({ resetPasswordField }) {
             </div>
           </div>
 
-          <button className="mt-10">
+          <div className="mt-10">
             <MainButton label="simpan" />
-          </button>
+          </div>
         </div>
         {/* Perbarui password */}
         <div className="bg-white mx-auto p-6">
@@ -114,9 +114,9 @@ function ProfilePage({ resetPasswordField }) {
             </div>
           </div>
 
-          <button className="mt-10">
+          <div className="mt-10">
             <MainButton label="simpan" />
-          </button>
+          </div>
         </div>
         {/* Hapus akun */}
         <div className="bg-white mx-auto p-6">

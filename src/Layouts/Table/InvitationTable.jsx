@@ -8,8 +8,8 @@ import {
   FullTrash,
 } from "../../assets/Icons";
 
-import ImportModal from "../Modal/ImportModal";
-import AddModal from "../Modal/AddModal";
+import ImportModal from "../Modal/InvList/ImportModal";
+import AddModal from "../Modal/InvList/AddModal";
 
 const data = [
   {
@@ -52,6 +52,12 @@ const data = [
 function InvitationTable() {
   const [isImportModalOpen, setIsImportModalOpen] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+
+  // isDelete?
+  const [isDelete, setIsDelete] = useState(false);
+  const handleDelete = () => {
+    setIsDelete(!isDelete);
+  };
 
   return (
     <div className="bg-[#F5F1EE] relative mt-28 mb-10 p-10 w-11/12 mx-auto">
@@ -107,7 +113,7 @@ function InvitationTable() {
           <button>
             <Share color="#505050" />
           </button>
-          <button>
+          <button onClick={handleDelete}>
             <FullTrash color="#505050" />
           </button>
         </div>
@@ -131,12 +137,18 @@ function InvitationTable() {
                 <td className="p-4">{item.whatsapp}</td>
                 <td className="p-4">{item.status}</td>
                 <td className="p-4 grid">
-                  <input
-                    type="checkbox"
-                    checked={item.action}
-                    className="form-checkbox h-4 w-4 text-gray-600 m-auto"
-                    readOnly
-                  />
+                  {isDelete ? (
+                    <div className="flex items-center justify-center cursor-pointer">
+                      <FullTrash color="#505050" />
+                    </div>
+                  ) : (
+                    <input
+                      type="checkbox"
+                      checked={item.action}
+                      className="form-checkbox h-4 w-4 text-gray-600 m-auto"
+                      readOnly
+                    />
+                  )}
                 </td>
               </tr>
             ))}

@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { StrokeClose } from "../../assets/Icons";
-import MainButton from "../../Components/Buttons/MainButton";
+import { StrokeClose } from "../../../assets/Icons";
+import MainButton from "../../../Components/Buttons/MainButton";
 
 const ImportModal = ({ closeModal }) => {
   return ReactDOM.createPortal(

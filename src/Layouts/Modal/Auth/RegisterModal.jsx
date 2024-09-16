@@ -1,8 +1,8 @@
 import React from "react";
-import { Aye, AyeSlash, StrokeClose } from "../../assets/Icons";
+import { Aye, AyeSlash, StrokeClose } from "../../../assets/Icons";
 import { Link } from "react-router-dom";
-import MainButton from "../../Components/Buttons/MainButton";
-import usePasswordToggle from "../../Hooks/usePasswordToggle";
+import MainButton from "../../../Components/Buttons/MainButton";
+import usePasswordToggle from "../../../Hooks/usePasswordToggle";
 
 function RegisterModal({ isOpen, onClose, resetPasswordField }) {
   if (!isOpen) return null;
@@ -12,7 +12,8 @@ function RegisterModal({ isOpen, onClose, resetPasswordField }) {
   // };
 
   // Password
-  const { visibility, toggleVisibility } = usePasswordToggle(resetPasswordField);
+  const { visibility, toggleVisibility } =
+    usePasswordToggle(resetPasswordField);
 
   return (
     <div className="fixed inset-0 bg-[#0F0F0F]/40 flex items-center justify-center z-50">

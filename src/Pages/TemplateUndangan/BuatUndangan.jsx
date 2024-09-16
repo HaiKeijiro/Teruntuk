@@ -1,34 +1,52 @@
 import { useState } from "react";
-import { Formik, Form, useFormikContext } from "formik";
+import { useNavigate } from "react-router-dom";
+import { Formik, Form } from "formik";
 import StepProgressForm from "../../Components/CreateTemplateForm/StepProgressForm";
 import FormStep from "../../Components/CreateTemplateForm/FormStep";
 import NavigationButtons from "../../Components/CreateTemplateForm/NavigationButtons";
 import { CreateTemplateSchema, initialValues } from "../../utils/validation";
-
-const FormikWrapper = ({ children }) => {
-  const { setErrors, setTouched, resetForm, isValid } = useFormikContext();
-
-  return children({ setErrors, setTouched, resetForm, isValid });
-};
+import FormikWrapper from "../../Components/CreateTemplateForm/FormikWrapper";
 
 const BuatUndangan = () => {
   const [currentStep, setCurrentStep] = useState(0);
 
+  // Get navigate function from useNavigate hook
+  const navigate = useNavigate();
+
+  // Load form values from local storage when component mounts
+  const loadInitialValues = () => {
+    const savedValues = localStorage.getItem("formValues");
+    return savedValues ? JSON.parse(savedValues) : initialValues;
+  };
+
   const handleCancel = () => alert("Cancel");
+
+  const handleSubmit = (values, { resetForm }) => {
+    // Handle form submission logic here
+    console.log("Form submitted:", values);
+
+    // Clear local storage and reset the form
+    localStorage.removeItem("formValues");
+    resetForm();
+
+    // Navigate to invitation list
+    navigate("dashboard/invitation-list");
+  };
 
   return (
     <div className="p-8">
       <StepProgressForm currentStep={currentStep} />
       <Formik
-        initialValues={initialValues}
+        initialValues={loadInitialValues()}
         validationSchema={CreateTemplateSchema[currentStep]}
         validateOnChange={true}
         validateOnBlur={true}
+        onSubmit={handleSubmit}
       >
-        {() => (
+        {({ isSubmitting, handleSubmit }) => (
           <FormikWrapper>
             {({ setErrors, setTouched, resetForm, isValid }) => (
-              <Form>
+              <Form onSubmit={handleSubmit}>
                 <FormStep step={currentStep} />
                 <NavigationButtons
                   currentStep={currentStep}
@@ -44,6 +62,8 @@ const BuatUndangan = () => {
                     setCurrentStep((prev) => Math.min(prev + 1, 2));
                   }}
                   isValid={isValid}
+                  onSubmit={() => handleSubmit()} // Ensure submit handler is triggered
+                  isSubmitting={isSubmitting} // Pass isSubmitting state to disable buttons while submitting
                 />
               </Form>
             )}
