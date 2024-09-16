@@ -1,21 +1,21 @@
 import React from "react";
 
-const NavigationButtons = ({ currentStep, setCurrentStep }) => {
-  const goToNextStep = () => {
-    setCurrentStep((prevStep) => Math.min(prevStep + 1, 2));
-  };
-
-  const goToPreviousStep = () => {
-    setCurrentStep((prevStep) => Math.max(prevStep - 1, 0));
-  };
-
+const NavigationButtons = ({
+  currentStep,
+  onCancel,
+  onPrevious,
+  onNext,
+  onSubmit,
+}) => {
   const renderButtons = () => {
     switch (currentStep) {
       case 0:
         return (
           <>
-            <Button className="bg-gray-300 text-gray-700">Cancel</Button>
-            <Button onClick={goToNextStep} className="bg-main text-white">
+            <Button className="bg-gray-300 text-gray-700" onClick={onCancel}>
+              Cancel
+            </Button>
+            <Button onClick={onNext} className="bg-main text-white">
               Next
             </Button>
           </>
@@ -23,13 +23,10 @@ const NavigationButtons = ({ currentStep, setCurrentStep }) => {
       case 1:
         return (
           <>
-            <Button
-              onClick={goToPreviousStep}
-              className="bg-gray-300 text-gray-700"
-            >
+            <Button onClick={onPrevious} className="bg-gray-300 text-gray-700">
               Previous
             </Button>
-            <Button onClick={goToNextStep} className="bg-main text-white">
+            <Button onClick={onNext} className="bg-main text-white">
               Next
             </Button>
           </>
@@ -37,13 +34,10 @@ const NavigationButtons = ({ currentStep, setCurrentStep }) => {
       case 2:
         return (
           <>
-            <Button
-              onClick={goToPreviousStep}
-              className="bg-gray-300 text-gray-700"
-            >
+            <Button onClick={onPrevious} className="bg-gray-300 text-gray-700">
               Previous
             </Button>
-            <Button className="bg-main text-white">
+            <Button className="bg-main text-white" onClick={onSubmit}>
               Submit
             </Button>
           </>
@@ -61,6 +55,7 @@ const Button = ({ onClick, disabled, className, children }) => (
     onClick={onClick}
     disabled={disabled}
     className={`rounded px-4 py-2 ${className}`}
+    type="button"
   >
     {children}
   </button>

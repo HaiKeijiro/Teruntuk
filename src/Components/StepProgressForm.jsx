@@ -1,28 +1,20 @@
 import React from "react";
 import { Check } from "../assets/Icons";
 
-const StepProgressForm = ({ currentStep }) => {
-  const steps = [
-    { name: "Pasangan" },
-    { name: "Acara" },
-    { name: "Additional" },
-  ];
+const steps = [{ name: "Pasangan" }, { name: "Acara" }, { name: "Additional" }];
 
-  return (
-    <div className="flex justify-center items-center w-full gap-x-32 mx-auto py-4">
-      {steps.map((step, index) => (
-        <div className="flex items-center">
-          <StepItem
-            key={index}
-            step={step}
-            isActive={currentStep === index}
-            isCompleted={currentStep > index}
-          />
-        </div>
-      ))}
-    </div>
-  );
-};
+const StepProgress = ({ currentStep }) => (
+  <div className="flex justify-center items-center w-full gap-x-32 mx-auto py-4">
+    {steps.map((step, index) => (
+      <StepItem
+        key={index}
+        step={step}
+        isActive={currentStep === index}
+        isCompleted={currentStep > index}
+      />
+    ))}
+  </div>
+);
 
 const StepItem = ({ step, isActive, isCompleted }) => (
   <div className="flex items-center gap-x-3">
@@ -31,7 +23,7 @@ const StepItem = ({ step, isActive, isCompleted }) => (
         isCompleted ? "bg-main" : isActive ? "bg-main" : "border-4 border-main"
       }`}
     >
-      {isCompleted ? <Check color="white" width="18" height="18" /> : ""}
+      {isCompleted && <Check color="white" width="18" height="18" />}
     </div>
     <span className={`${isActive ? "font-bold" : "font-normal"}`}>
       {step.name}
@@ -39,4 +31,4 @@ const StepItem = ({ step, isActive, isCompleted }) => (
   </div>
 );
 
-export default StepProgressForm;
+export default StepProgress;
