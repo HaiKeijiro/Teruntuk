@@ -6,6 +6,7 @@ const NavigationButtons = ({
   onPrevious,
   onNext,
   onSubmit,
+  isValid,
 }) => {
   const renderButtons = () => {
     switch (currentStep) {
@@ -15,7 +16,11 @@ const NavigationButtons = ({
             <Button className="bg-gray-300 text-gray-700" onClick={onCancel}>
               Cancel
             </Button>
-            <Button onClick={onNext} className="bg-main text-white">
+            <Button
+              onClick={onNext}
+              className={!isValid ? "bg-main/50 text-white" : "bg-main text-white"}
+              disabled={!isValid}
+            >
               Next
             </Button>
           </>
@@ -26,7 +31,11 @@ const NavigationButtons = ({
             <Button onClick={onPrevious} className="bg-gray-300 text-gray-700">
               Previous
             </Button>
-            <Button onClick={onNext} className="bg-main text-white">
+            <Button
+              onClick={onNext}
+              className="bg-main text-white"
+              disabled={!isValid}
+            >
               Next
             </Button>
           </>
@@ -37,7 +46,11 @@ const NavigationButtons = ({
             <Button onClick={onPrevious} className="bg-gray-300 text-gray-700">
               Previous
             </Button>
-            <Button className="bg-main text-white" onClick={onSubmit}>
+            <Button
+              className="bg-main text-white"
+              onClick={onSubmit}
+              disabled={!isValid}
+            >
               Submit
             </Button>
           </>
@@ -54,7 +67,7 @@ const Button = ({ onClick, disabled, className, children }) => (
   <button
     onClick={onClick}
     disabled={disabled}
-    className={`rounded px-4 py-2 ${className}`}
+    className={`rounded px-4 py-2 cursor-pointer ${className}`}
     type="button"
   >
     {children}

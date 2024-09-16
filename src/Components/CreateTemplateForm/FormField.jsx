@@ -1,6 +1,8 @@
 import React from "react";
+import { Field, ErrorMessage } from "formik";
 
 const FormField = ({
+  name,
   label,
   type = "text",
   textarea,
@@ -11,18 +13,24 @@ const FormField = ({
   gridCols = "col-span-1",
 }) => (
   <div className={`mb-4 ${gridCols}`}>
-    <label className="block mb-2 capitalize">
+    <label htmlFor={name} className="block mb-2 capitalize">
       {label}
       <span className="text-red-500">*</span>
     </label>
     {textarea ? (
-      <textarea
+      <Field
+        as="textarea"
+        id={name}
+        name={name}
         className="w-full border border-gray-300 px-4 py-2 rounded"
         placeholder={placeholder}
         aria-label={label}
       />
     ) : select ? (
-      <select
+      <Field
+        as="select"
+        id={name}
+        name={name}
         className="w-full border border-gray-300 px-4 py-2 rounded focus:outline-none"
         aria-label={label}
       >
@@ -34,17 +42,24 @@ const FormField = ({
             {option}
           </option>
         ))}
-      </select>
+      </Field>
     ) : Component ? (
-      <Component />
+      <Field name={name} component={Component} placeholder={placeholder} />
     ) : (
-      <input
+      <Field
         type={type}
+        id={name}
+        name={name}
         className="w-full border border-gray-300 px-4 py-2 rounded"
         placeholder={placeholder}
         aria-label={label}
       />
     )}
+    <ErrorMessage
+      name={name}
+      component="div"
+      className="text-red-500 text-sm mt-1"
+    />
   </div>
 );
 

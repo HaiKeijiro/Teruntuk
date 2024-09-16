@@ -1,5 +1,5 @@
 import React from "react";
-import { Check } from "../assets/Icons";
+import { Check } from "../../assets/Icons";
 
 const steps = [{ name: "Pasangan" }, { name: "Acara" }, { name: "Additional" }];
 
