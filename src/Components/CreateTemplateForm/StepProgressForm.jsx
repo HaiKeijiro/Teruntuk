@@ -4,7 +4,7 @@ import { Check } from "../../assets/Icons";
 const steps = [{ name: "Pasangan" }, { name: "Acara" }, { name: "Additional" }];
 
 const StepProgressForm = ({ currentStep }) => (
-  <div className="flex justify-center items-center w-full gap-x-32 mx-auto py-4">
+  <div className="flex justify-evenly items-center w-full mx-auto py-4">
     {steps.map((step, index) => (
       <StepItem
         key={index}

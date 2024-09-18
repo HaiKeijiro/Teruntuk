@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import MainButton from "../../Components/Buttons/MainButton";
-import ArrowLeft from "../../assets/testimonial/testimonial-arrow-left.png";
-import { BurgerMenu } from "../../assets/Icons";
+import { ArrowDown, BurgerMenu, Music, Triangle } from "../../assets/Icons";
 
 // Images
 import banner from "../../assets/templates/preview/main/banner.png";
@@ -30,25 +29,35 @@ function Preview() {
     };
   }, []);
 
+  // Music button
+  const [isPlayed, setMusic] = useState(true);
+
   return (
-    <div>
+    <div className="relative">
       {/* Navbar */}
       <nav
-        className={`fixed w-full z-50 ${
+        className={`fixed w-full z-50 py-4 ${
           isScrolled ? "bg-[#BDA97A]" : "bg-transparent"
         }`}
       >
-        <div className="hidden md:flex items-center justify-between px-10">
+        <div className="hidden relative md:flex items-center justify-between px-10">
           <Link to={"template-undangan"} className="z-50">
-            <img src={ArrowLeft} alt="arrow-left.png" />
+            <button className="rotate-90 bg-gray-100 rounded-full p-2">
+              <ArrowDown />
+            </button>
           </Link>
-          <ul className="uppercase flex items-center justify-center gap-10 font-medium">
+          <ul className="absolute left-1/2 transform -translate-x-1/2 uppercase flex flex-grow items-center justify-center gap-10 font-medium">
             <li>home</li>
             <li>gallery</li>
             <li>location</li>
             <li>buku tamu</li>
           </ul>
-          <MainButton label={"gunakan"} directTo={"buat-undangan"} />
+          <MainButton
+            label={"gunakan"}
+            directTo={"buat-undangan"}
+            px={5}
+            py={2}
+          />
         </div>
         <button className="md:hidden">
           <BurgerMenu />
@@ -316,6 +325,14 @@ function Preview() {
           </p>
         </div>
       </section>
+      {/* Music */}
+      <button className="rounded-full p-2 border-2 border-black absolute right-0 bottom-0"
+        onClick={() => {
+          setMusic(!isPlayed);
+        }}
+      >
+        {isPlayed ? <Music /> : <div className="rotate-90"><Triangle /></div>}
+      </button>
     </div>
   );
 }

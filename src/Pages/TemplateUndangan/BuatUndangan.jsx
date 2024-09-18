@@ -43,7 +43,7 @@ const BuatUndangan = () => {
         validateOnBlur={true}
         onSubmit={handleSubmit}
       >
-        {({ isSubmitting, handleSubmit }) => (
+        {({ isSubmitting, handleSubmit, dirty }) => (
           <FormikWrapper>
             {({ setErrors, setTouched, resetForm, isValid }) => (
               <Form onSubmit={handleSubmit}>
@@ -62,6 +62,7 @@ const BuatUndangan = () => {
                     setCurrentStep((prev) => Math.min(prev + 1, 2));
                   }}
                   isValid={isValid}
+                  isDirty={dirty}
                   onSubmit={() => handleSubmit()} // Ensure submit handler is triggered
                   isSubmitting={isSubmitting} // Pass isSubmitting state to disable buttons while submitting
                 />

@@ -10,7 +10,7 @@ const FormField = ({
   select,
   options = [],
   component: Component,
-  gridCols = "col-span-1",
+  gridCols,
 }) => (
   <div className={`mb-4 ${gridCols}`}>
     <label htmlFor={name} className="block mb-2 capitalize">

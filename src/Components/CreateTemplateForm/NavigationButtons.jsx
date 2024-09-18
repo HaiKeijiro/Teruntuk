@@ -6,75 +6,47 @@ const NavigationButtons = ({
   onPrevious,
   onNext,
   onSubmit,
-  isValid,
-  isSubmitting, // Add this to handle button states while submitting
+  isDirty,
+  isValid, // form validation
+  isSubmitting, // submit form
 }) => {
-  const renderButtons = () => {
-    switch (currentStep) {
-      case 0:
-        return (
-          <>
-            <Button className="bg-gray-300 text-gray-700" onClick={onCancel}>
-              Cancel
-            </Button>
-            <Button
-              onClick={onNext}
-              className={
-                !isValid ? "bg-main/50 text-white" : "bg-main text-white"
-              }
-              disabled={!isValid}
-            >
-              Next
-            </Button>
-          </>
-        );
-      case 1:
-        return (
-          <>
-            <Button onClick={onPrevious} className="bg-gray-300 text-gray-700">
-              Previous
-            </Button>
-            <Button
-              onClick={onNext}
-              className="bg-main text-white"
-              disabled={!isValid}
-            >
-              Next
-            </Button>
-          </>
-        );
-      case 2:
-        return (
-          <>
-            <Button onClick={onPrevious} className="bg-gray-300 text-gray-700">
-              Previous
-            </Button>
-            <Button
-              className="bg-main text-white"
-              onClick={onSubmit}
-              disabled={!isValid || isSubmitting} // Disable if invalid or submitting
-            >
-              Submit
-            </Button>
-          </>
-        );
-      default:
-        return null;
-    }
-  };
+  return (
+    <div className="flex justify-between mt-4">
+      {/* Cancel Button */}
+      <button type="button" className="btn-secondary" onClick={onCancel}>
+        Cancel
+      </button>
 
-  return <div className="mt-8 flex justify-between">{renderButtons()}</div>;
+      <button onClick={onPrevious} className="bg-gray-300 text-gray-700">
+        Previous
+      </button>
+
+      {/* Next Button */}
+      {currentStep < 2 ? (
+        <button
+          type="button"
+          onClick={onNext}
+          disabled={!(isValid && isDirty)}
+          className={`mt-4 px-4 py-2 bg-main text-white rounded ${
+            !(isValid && isDirty) ? "opacity-50 cursor-not-allowed" : ""
+          }`}
+        >
+          Next
+        </button>
+      ) : (
+        /* Submit Button */
+        <button
+          type="submit"
+          className={`btn-primary ${
+            isSubmitting ? "cursor-not-allowed opacity-50" : ""
+          }`}
+          disabled={isSubmitting}
+        >
+          Submit
+        </button>
+      )}
+    </div>
+  );
 };
-
-const Button = ({ onClick, disabled, className, children }) => (
-  <button
-    onClick={onClick}
-    disabled={disabled}
-    className={`rounded px-4 py-2 cursor-pointer ${className}`}
-    type="button"
-  >
-    {children}
-  </button>
-);
 
 export default NavigationButtons;
