@@ -9,8 +9,8 @@ const StepProgressForm = ({ currentStep }) => (
       <StepItem
         key={index}
         step={step}
-        isActive={currentStep === index}
-        isCompleted={currentStep > index}
+        isActive={currentStep === index + 1}
+        isCompleted={currentStep > index + 1}
       />
     ))}
   </div>

@@ -5,45 +5,67 @@ const NavigationButtons = ({
   onCancel,
   onPrevious,
   onNext,
-  onSubmit,
   isDirty,
-  isValid, // form validation
-  isSubmitting, // submit form
+  isValid,
 }) => {
   return (
-    <div className="flex justify-between mt-4">
-      {/* Cancel Button */}
-      <button type="button" className="btn-secondary" onClick={onCancel}>
-        Cancel
-      </button>
+    <div className="col-span-12 flex justify-between mt-4">
+      {currentStep === 1 && (
+        <>
+          <button
+            type="button"
+            onClick={onCancel}
+            className="bg-gray-300 text-gray-700 px-6 py-2 rounded-md"
+          >
+            Cancel
+          </button>
+          <button
+            type="button"
+            onClick={onNext}
+            className="bg-main text-white px-6 py-2 rounded-md"
+            // disabled={!isValid || !isDirty}
+          >
+            Next
+          </button>
+        </>
+      )}
 
-      <button onClick={onPrevious} className="bg-gray-300 text-gray-700">
-        Previous
-      </button>
+      {currentStep === 2 && (
+        <>
+          <button
+            type="button"
+            onClick={onPrevious}
+            className="bg-gray-300 text-gray-700 px-6 py-2 rounded-md"
+          >
+            Previous
+          </button>
+          <button
+            type="button"
+            onClick={onNext}
+            className="bg-main text-white px-6 py-2 rounded-md"
+            // disabled={!isValid || !isDirty}
+          >
+            Next
+          </button>
+        </>
+      )}
 
-      {/* Next Button */}
-      {currentStep < 2 ? (
-        <button
-          type="button"
-          onClick={onNext}
-          disabled={!(isValid && isDirty)}
-          className={`mt-4 px-4 py-2 bg-main text-white rounded ${
-            !(isValid && isDirty) ? "opacity-50 cursor-not-allowed" : ""
-          }`}
-        >
-          Next
-        </button>
-      ) : (
-        /* Submit Button */
-        <button
-          type="submit"
-          className={`btn-primary ${
-            isSubmitting ? "cursor-not-allowed opacity-50" : ""
-          }`}
-          disabled={isSubmitting}
-        >
-          Submit
-        </button>
+      {currentStep === 3 && (
+        <>
+          <button
+            type="button"
+            onClick={onPrevious}
+            className="bg-gray-300 text-gray-700 px-6 py-2 rounded-md"
+          >
+            Previous
+          </button>
+          <button
+            type="submit"
+            className="bg-main text-white px-6 py-2 rounded-md"
+          >
+            Submit
+          </button>
+        </>
       )}
     </div>
   );

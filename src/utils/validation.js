@@ -32,36 +32,7 @@ export const CreateTemplateSchema = [
   // Additional
   Yup.object().shape({
     domain: Yup.string().required("Domain website is required"),
+    gambarCover: Yup.string().required("Gambar cover is required"),
+    fotoMempelai: Yup.string().required("Foto mempelai is required"),
   }),
 ];
-
-// Initial form values
-export const initialValues = {
-  fullPria: "",
-  fullWanita: "",
-  panggilanPria: "",
-  panggilanWanita: "",
-  putraKe: "",
-  putriKe: "",
-  ayahPria: "",
-  ayahWanita: "",
-  ibuPria: "",
-  ibuWanita: "",
-  igPria: "",
-  igWanita: "",
-  tentangPasangan: "",
-  namaAcara: "",
-  deskripsiAcara: "",
-  mulaiPada: "",
-  selesaiPada: "",
-  zonaWaktu: "",
-  lokasi: "",
-  namaGedung: "",
-  kota: "",
-  alamat: "",
-  domain: "",
-  musik: "",
-  gambarCover: "",
-  fotoMempelai: "",
-  galleri: "",
-};

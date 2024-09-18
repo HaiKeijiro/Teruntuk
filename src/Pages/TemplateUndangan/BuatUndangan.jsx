@@ -1,74 +1,98 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Formik, Form } from "formik";
-import StepProgressForm from "../../Components/CreateTemplateForm/StepProgressForm";
-import FormStep from "../../Components/CreateTemplateForm/FormStep";
+import FormField from "../../Components/CreateTemplateForm/FormField";
+import {
+  additionalFields,
+  eventFields,
+  pairingFields,
+} from "../../Components/CreateTemplateForm/FormInputs";
 import NavigationButtons from "../../Components/CreateTemplateForm/NavigationButtons";
-import { CreateTemplateSchema, initialValues } from "../../utils/validation";
-import FormikWrapper from "../../Components/CreateTemplateForm/FormikWrapper";
+import { CreateTemplateSchema } from "../../utils/validation";
+import StepProgressForm from "../../Components/CreateTemplateForm/StepProgressForm";
 
 const BuatUndangan = () => {
-  const [currentStep, setCurrentStep] = useState(0);
-
-  // Get navigate function from useNavigate hook
   const navigate = useNavigate();
+  const [currentStep, setCurrentStep] = useState(1);
 
-  // Load form values from local storage when component mounts
-  const loadInitialValues = () => {
-    const savedValues = localStorage.getItem("formValues");
-    return savedValues ? JSON.parse(savedValues) : initialValues;
+  // Combine all fields for initial values dynamically
+  const allFields = [...pairingFields, ...eventFields, ...additionalFields];
+  const initialValues = allFields.reduce((acc, field) => {
+    acc[field.name] = "";
+    return acc;
+  }, {});
+
+  const steps = [
+    {
+      fields: pairingFields,
+      validationSchema: CreateTemplateSchema[0],
+    },
+    {
+      fields: eventFields,
+      validationSchema: CreateTemplateSchema[1],
+    },
+    {
+      fields: additionalFields,
+      validationSchema: CreateTemplateSchema[2],
+    },
+  ];
+
+  const handleCancel = () => {
+    navigate(-1);
   };
 
-  const handleCancel = () => alert("Cancel");
-
-  const handleSubmit = (values, { resetForm }) => {
-    // Handle form submission logic here
-    console.log("Form submitted:", values);
-
-    // Clear local storage and reset the form
-    localStorage.removeItem("formValues");
-    resetForm();
-
-    // Navigate to invitation list
-    navigate("dashboard/invitation-list");
+  const handleNext = (validateForm, isValid) => {
+    validateForm().then((errors) => {
+      if (isValid && Object.keys(errors).length === 0) {
+        setCurrentStep((prev) => prev + 1);
+      }
+    });
   };
+
+  const handlePrevious = () => {
+    setCurrentStep((prev) => prev - 1);
+  };
+
+  const currentStepConfig = steps[currentStep - 1];
 
   return (
-    <div className="p-8">
+    <div>
       <StepProgressForm currentStep={currentStep} />
       <Formik
-        initialValues={loadInitialValues()}
-        validationSchema={CreateTemplateSchema[currentStep]}
-        validateOnChange={true}
-        validateOnBlur={true}
-        onSubmit={handleSubmit}
+        initialValues={initialValues}
+        validationSchema={currentStepConfig?.validationSchema}
+        validateOnMount={true}
+        onSubmit={(values) => {
+          console.log(values);
+        }}
       >
-        {({ isSubmitting, handleSubmit, dirty }) => (
-          <FormikWrapper>
-            {({ setErrors, setTouched, resetForm, isValid }) => (
-              <Form onSubmit={handleSubmit}>
-                <FormStep step={currentStep} />
-                <NavigationButtons
-                  currentStep={currentStep}
-                  onCancel={handleCancel}
-                  onPrevious={() => {
-                    setTouched({});
-                    setErrors({});
-                    setCurrentStep((prev) => Math.max(prev - 1, 0));
-                  }}
-                  onNext={() => {
-                    setTouched({});
-                    setErrors({});
-                    setCurrentStep((prev) => Math.min(prev + 1, 2));
-                  }}
-                  isValid={isValid}
-                  isDirty={dirty}
-                  onSubmit={() => handleSubmit()} // Ensure submit handler is triggered
-                  isSubmitting={isSubmitting} // Pass isSubmitting state to disable buttons while submitting
-                />
-              </Form>
-            )}
-          </FormikWrapper>
+        {({ isValid, isDirty, isSubmitting, validateForm }) => (
+          <Form className="grid grid-cols-12">
+            {currentStepConfig?.fields.map((field) => (
+              <FormField
+                key={field.name}
+                name={field.name}
+                label={field.label}
+                type={field.type}
+                textarea={field.textarea}
+                select={field.select}
+                options={field.options}
+                component={field.component}
+                placeholder={field.placeholder}
+                gridCols={field.gridCols}
+              />
+            ))}
+
+            <NavigationButtons
+              currentStep={currentStep}
+              onCancel={handleCancel}
+              onPrevious={handlePrevious}
+              onNext={() => handleNext(validateForm, isValid)}
+              isDirty={isDirty}
+              isValid={isValid}
+              onSubmit={isSubmitting}
+            />
+          </Form>
         )}
       </Formik>
     </div>
