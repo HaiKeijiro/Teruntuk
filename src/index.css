@@ -20,6 +20,13 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0;
 }
 
+/* Hide dropdown from select option */
+select {
+  appearance: none; /* Remove default styling */
+  -webkit-appearance: none; /* For Safari */
+  -moz-appearance: none;
+}
+
 .bg-form {
   background-image: url(assets/templates/preview/main/bgform.png);
   background-size: cover;

@@ -318,15 +318,39 @@ function Preview() {
             Buka lokasi di laman Google Maps
           </p>
         </div>
-        <div className="border-t text-center absolute w-full bottom-0 p-5">
+        <div className="border-y text-center absolute w-full bottom-0 p-5">
           <p className="text-[#A5A1A1] text-body">
             © 2023 — made with <span className="text-red-500">♥</span> in
             incognito
           </p>
         </div>
       </section>
+      {/* Buku tamu */}
+      <section className="w-full h-fit py-20">
+        <h2 className="text-h2 font-martel text-center">Buku Tamu</h2>
+        <div className="w-[90%] mx-auto mt-10 p-6 border rounded-md bg-main/5">
+          {/* Ucapan pribadi*/}
+          <div className="flex flex-col gap-4 mx-auto">
+            <p>20 Ucapan</p>
+            <input type="text" name="" id="" placeholder="Nama" className="border p-2 rounded-md" />
+            <textarea name="" id="" placeholder="Ucapan" className="border p-2 rounded-md"></textarea>
+            <select name="" id="" className="border p-2 rounded-md">
+              <option value="">Konfirmasi kehadiran</option>
+              <option value="">Hadir</option>
+              <option value="">Tidak hadir</option>
+            </select>
+            <div className="flex justify-end w-full"><MainButton label="kirim" px={3} py={1} /></div>
+          </div>
+          {/* Ucapan orang lain */}
+          <div className="px-10 py-4 border mt-10">
+            <h6 className="text-h6 font-bold">Name</h6>
+            <small className="text-small text-black/60 font-medium">5 hari, 10 jam lalu</small>
+            <p className="text-body font-mulish">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dolorum!</p>
+          </div>
+        </div>
+      </section>
       {/* Music */}
-      <button className="rounded-full p-2 border-2 border-black absolute right-0 bottom-0"
+      <button className="rounded-full p-2 border-2 border-black fixed right-5 bottom-5 z-10"
         onClick={() => {
           setMusic(!isPlayed);
         }}
