@@ -18,7 +18,7 @@ const BuatUndangan = () => {
   // Combine all fields for initial values dynamically
   const allFields = [...pairingFields, ...eventFields, ...additionalFields];
   const initialValues = allFields.reduce((acc, field) => {
-    acc[field.name] = "";
+    acc[field.name] = localStorage.getItem(field.name) || "";
     return acc;
   }, {});
 
@@ -47,7 +47,7 @@ const BuatUndangan = () => {
   const currentStepConfig = steps[currentStep - 1];
 
   return (
-    <div>
+    <div className="w-4/5 mx-auto">
       <StepProgressForm currentStep={currentStep} />
       <Formik
         initialValues={initialValues}
@@ -55,10 +55,11 @@ const BuatUndangan = () => {
         validateOnMount={true}
         onSubmit={(values) => {
           console.log(values);
+          allFields.forEach(field => localStorage.removeItem(field.name))
         }}
       >
-        {({ isValid, validateForm }) => (
-          <Form className="grid grid-cols-12">
+        {({ isValid, validateForm, handleChange }) => (
+          <Form className="grid grid-cols-12 gap-4">
             {currentStepConfig?.fields.map((field) => (
               <FormField
                 key={field.name}
@@ -71,6 +72,12 @@ const BuatUndangan = () => {
                 component={field.component}
                 placeholder={field.placeholder}
                 gridCols={field.gridCols}
+                onChange={(e) => {
+                  // Call Formik's handleChange
+                  handleChange(e);
+                  // Save to local storage
+                  localStorage.setItem(field.name, e.target.value);
+                }}
               />
             ))}
 
