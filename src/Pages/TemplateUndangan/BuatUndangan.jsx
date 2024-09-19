@@ -23,18 +23,9 @@ const BuatUndangan = () => {
   }, {});
 
   const steps = [
-    {
-      fields: pairingFields,
-      validationSchema: CreateTemplateSchema[0],
-    },
-    {
-      fields: eventFields,
-      validationSchema: CreateTemplateSchema[1],
-    },
-    {
-      fields: additionalFields,
-      validationSchema: CreateTemplateSchema[2],
-    },
+    { fields: pairingFields, validationSchema: CreateTemplateSchema[0] },
+    { fields: eventFields, validationSchema: CreateTemplateSchema[1] },
+    { fields: additionalFields, validationSchema: CreateTemplateSchema[2] },
   ];
 
   const handleCancel = () => {
@@ -66,7 +57,7 @@ const BuatUndangan = () => {
           console.log(values);
         }}
       >
-        {({ isValid, isDirty, isSubmitting, validateForm }) => (
+        {({ isValid, validateForm }) => (
           <Form className="grid grid-cols-12">
             {currentStepConfig?.fields.map((field) => (
               <FormField
@@ -88,9 +79,7 @@ const BuatUndangan = () => {
               onCancel={handleCancel}
               onPrevious={handlePrevious}
               onNext={() => handleNext(validateForm, isValid)}
-              isDirty={isDirty}
               isValid={isValid}
-              onSubmit={isSubmitting}
             />
           </Form>
         )}

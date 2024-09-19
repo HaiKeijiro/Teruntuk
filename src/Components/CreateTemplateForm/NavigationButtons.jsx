@@ -5,7 +5,6 @@ const NavigationButtons = ({
   onCancel,
   onPrevious,
   onNext,
-  isDirty,
   isValid,
 }) => {
   return (
@@ -22,8 +21,8 @@ const NavigationButtons = ({
           <button
             type="button"
             onClick={onNext}
-            className="bg-main text-white px-6 py-2 rounded-md"
-            // disabled={!isValid || !isDirty}
+            className={isValid ? "bg-main text-white px-6 py-2 rounded-md" : "bg-main/60 text-white px-6 py-2 rounded-md"}
+            disabled={!isValid}
           >
             Next
           </button>
@@ -42,8 +41,8 @@ const NavigationButtons = ({
           <button
             type="button"
             onClick={onNext}
-            className="bg-main text-white px-6 py-2 rounded-md"
-            // disabled={!isValid || !isDirty}
+            className={isValid ? "bg-main text-white px-6 py-2 rounded-md" : "bg-main/60 text-white px-6 py-2 rounded-md"}
+            disabled={!isValid}
           >
             Next
           </button>
@@ -61,7 +60,8 @@ const NavigationButtons = ({
           </button>
           <button
             type="submit"
-            className="bg-main text-white px-6 py-2 rounded-md"
+            className={isValid ? "bg-main text-white px-6 py-2 rounded-md" : "bg-main/60 text-white px-6 py-2 rounded-md"}
+            disabled={!isValid}
           >
             Submit
           </button>
