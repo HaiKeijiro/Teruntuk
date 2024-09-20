@@ -8,12 +8,20 @@ import PreviewAlison from "../../assets/templates/alison/preview.png";
 import { Copy, Gallery } from "../../assets/Icons";
 import MainButton from "../../Components/Buttons/MainButton";
 
+import paymentChannel from "../../../api/payment-channel.json";
+import PaymentNotif from "../../Layouts/Notification/PaymentNotif";
+import useMultiModal from "../../Hooks/useModal";
+
 function Aktivasi() {
   const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
   };
+
+  const { data } = paymentChannel;
+
+  const { isModalOpen, openModal, closeModal } = useMultiModal();
 
   return (
     <div>
@@ -44,7 +52,9 @@ function Aktivasi() {
               <h2 className="text-sm-h2 md:text-md-h2 lg:text-h2 font-derivia uppercase tracking-widest">
                 sorliene
               </h2>
-              <span className="text-sm-h6 md:text-md-h6 lg:text-h6 tracking-widest">RP. 149,000</span>
+              <span className="text-sm-h6 md:text-md-h6 lg:text-h6 tracking-widest">
+                RP. 149,000
+              </span>
             </div>
 
             <small className="text-sm-body md:text-md-body lg:text-body font-martel">
@@ -113,7 +123,7 @@ function Aktivasi() {
               />
             </div>
 
-            <div className="space-y-3">
+            {/* <div className="space-y-3">
               <p>{"Bukti pembayaran (gambar)"}</p>
               <button className="flex flex-col">
                 <label
@@ -126,13 +136,26 @@ function Aktivasi() {
                 </label>
                 <input type="file" id="uploadInput" className="w-full mt-2" />
               </button>
+            </div> */}
+
+            <div className="">
+              <select name="" id="" className="border focus:outline-none p-2">
+                <option value="">Pilih metode pembayaran</option>
+                {data.map((item, index) => (
+                  <option value={index}>{item.name}</option>
+                ))}
+              </select>
             </div>
 
             <div className="flex items-center justify-between gap-4">
-              <button className="py-2 px-4 w-1/2 uppercase tracking-widest border border-black rounded-md">
+              <button className="py-2 px-4 w-full uppercase tracking-widest border border-black rounded-md">
                 cancel
               </button>
-              <MainButton label="konfirmasi" width="1/2" />
+              <MainButton
+                label="konfirmasi"
+                width="full"
+                onclick={() => openModal("paymentNotif")}
+              />
             </div>
           </div>
         </div>
@@ -143,6 +166,17 @@ function Aktivasi() {
 
       {/* Footer */}
       <Footer />
+
+      {/* Modal */}
+      {isModalOpen("paymentNotif") && (
+        <PaymentNotif
+          isOpen={isModalOpen}
+          type="success"
+          status="Succeed!"
+          message="The payment is completed!"
+          onClose={closeModal}
+        />
+      )}
     </div>
   );
 }

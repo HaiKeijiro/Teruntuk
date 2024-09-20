@@ -18,8 +18,11 @@ import useModal from "../Hooks/useModal";
 import MainButton from "../Components/Buttons/MainButton";
 import { useEffect, useState, useRef } from "react";
 
-function Navbar({ textColor = "black", icon }) {
-  const isLoggedIn = false;
+function Navbar({ textColor = "black", icon, isAdmin = false }) {
+  const isLoggedIn = true;
+
+  // Navigation
+  const navigate = useNavigate()
 
   // Scroll effect
   const [isScrolled, setIsScrolled] = useState(false);
@@ -71,12 +74,12 @@ function Navbar({ textColor = "black", icon }) {
 
   return (
     <nav
-      className={`fixed z-50 top-0 left-0 right-0 mx-auto flex items-center justify-between px-4 py-3 md:p-8 lg:px-20 lg:py-8 uppercase font-mulish ${
+      className={`fixed z-50 top-0 left-0 right-0 mx-auto flex items-center justify-between px-4 py-3 md:p-8 lg:px-20 lg:py-4 uppercase font-mulish ${
         isScrolled ? scrolledNav : ``
       }`}
     >
       {/* Logo */}
-      <div className="flex items-center gap-x-4 lg:flex-shrink-0">
+      <div className="flex items-center gap-x-4 lg:flex-shrink-0 cursor-pointer" onClick={() => navigate("/")}>
         <button
           className="inline lg:hidden"
           onClick={() => {
@@ -95,26 +98,51 @@ function Navbar({ textColor = "black", icon }) {
       )}
 
       {/* Nav Links */}
-      <ul className="hidden lg:flex gap-x-10 absolute left-1/2 transform -translate-x-1/2">
-        <li>
-          <NavLink to="/" className={isScrolled ? "" : `text-${textColor}`}>
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/template-undangan"
-            className={isScrolled ? "" : `text-${textColor}`}
-          >
-            Template Undangan
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/faq" className={isScrolled ? "" : `text-${textColor}`}>
-            FAQ
-          </NavLink>
-        </li>
-      </ul>
+      {isAdmin ? (
+        <ul className="hidden lg:flex gap-x-10 absolute left-1/2 transform -translate-x-1/2">
+          <li>
+            <NavLink
+              to="list-pengguna"
+              className={isScrolled ? "" : `text-${textColor}`}
+              onClick={""}
+            >
+              List Pengguna
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="list-website"
+              className={isScrolled ? "" : `text-${textColor}`}
+            >
+              List Website
+            </NavLink>
+          </li>
+        </ul>
+      ) : (
+        <ul className="hidden lg:flex gap-x-10 absolute left-1/2 transform -translate-x-1/2">
+          <li>
+            <NavLink to="/" className={isScrolled ? "" : `text-${textColor}`}>
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/template-undangan"
+              className={isScrolled ? "" : `text-${textColor}`}
+            >
+              Template Undangan
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/faq"
+              className={isScrolled ? "" : `text-${textColor}`}
+            >
+              FAQ
+            </NavLink>
+          </li>
+        </ul>
+      )}
 
       {/* Auth */}
       {isLoggedIn ? (

@@ -12,6 +12,9 @@ import ReservationList from "./Pages/Dashboard/ReservationList";
 import EditUndangan from "./Pages/Dashboard/EditUndangan";
 import Aktivasi from "./Pages/Dashboard/Aktivasi";
 import ProfilePage from "./Pages/ProfilePage";
+import Admin from "./Pages/Admin/index";
+import ListPengguna from "./Layouts/Table/ListPengguna"
+import ListWebsite from "./Layouts/Table/ListWebsite"
 
 function App() {
   return (
@@ -37,6 +40,12 @@ function App() {
         <Route path="dashboard/edit-undangan" element={<EditUndangan />} />
         <Route path="dashboard/aktivasi" element={<Aktivasi />} />
         <Route path="profile" element={<ProfilePage />} />
+
+        {/* Admin page */}
+        <Route path="admin" element={<Admin />}>
+          <Route path="list-pengguna" element={<ListPengguna />} />
+          <Route path="list-website" element={<ListWebsite />} />
+        </Route>
       </Routes>
     </>
   );
