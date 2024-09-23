@@ -1,37 +1,54 @@
 [
   {
-    "undangan": "Robin",
-    "nama_tamu": "Ryan",
+    "pemilik_acara": "Roma",
     "no_hp": "081234567890",
-    "email": "ryanincognito@gmail.com",
-    "status": "hadir"
+    "email": "romaincognito@gmail.com",
+    "status": "aktif",
+    "tamu": [
+      {
+        "nama_tamu": "Kai Cenat",
+        "no_hp": "081234567890",
+        "email": "keicenat@gmail.com",
+        "status": true
+      },
+      {
+        "nama_tamu": "Romy Ronald",
+        "no_hp": "081234567890",
+        "email": "romyronald@gmail.com",
+        "status": true
+      },
+      {
+        "nama_tamu": "Ami Michelin",
+        "no_hp": "081234567890",
+        "email": "amimichelin@gmail.com",
+        "status": false
+      }
+    ]
   },
   {
-    "undangan": "Robin",
-    "nama_tamu": "Ryan",
+    "pemilik_acara": "Raty",
     "no_hp": "081234567890",
-    "email": "ryanincognito@gmail.com",
-    "status": "hadir"
-  },
-  {
-    "undangan": "Robin",
-    "nama_tamu": "Ryan",
-    "no_hp": "081234567890",
-    "email": "ryanincognito@gmail.com",
-    "status": "hadir"
-  },
-  {
-    "undangan": "Robin",
-    "nama_tamu": "Ryan",
-    "no_hp": "081234567890",
-    "email": "ryanincognito@gmail.com",
-    "status": "hadir"
-  },
-  {
-    "undangan": "Robin",
-    "nama_tamu": "Ryan",
-    "no_hp": "081234567890",
-    "email": "ryanincognito@gmail.com",
-    "status": "hadir"
+    "email": "ratyincognito@gmail.com",
+    "status": "aktif",
+    "tamu": [
+      {
+        "nama_tamu": "John Doe",
+        "no_hp": "081234567890",
+        "email": "johndoe@gmail.com",
+        "status": false
+      },
+      {
+        "nama_tamu": "Mia Rika",
+        "no_hp": "081234567890",
+        "email": "miarika@gmail.com",
+        "status": false
+      },
+      {
+        "nama_tamu": "John Average",
+        "no_hp": "081234567890",
+        "email": "johnaverage@gmail.com",
+        "status": true
+      }
+    ]
   }
 ]

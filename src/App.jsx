@@ -15,6 +15,7 @@ import ProfilePage from "./Pages/ProfilePage";
 import Admin from "./Pages/Admin/index";
 import ListPengguna from "./Layouts/Table/ListPengguna"
 import ListWebsite from "./Layouts/Table/ListWebsite"
+import GuessTable from "./Layouts/Table/GuessTable";
 
 function App() {
   return (
@@ -43,8 +44,9 @@ function App() {
 
         {/* Admin page */}
         <Route path="admin" element={<Admin />}>
-          <Route path="list-pengguna" element={<ListPengguna />} />
           <Route path="list-website" element={<ListWebsite />} />
+          <Route path="list-pengguna" element={<ListPengguna />} />
+          <Route path="list-pengguna/:id" element={<GuessTable />} />
         </Route>
       </Routes>
     </>

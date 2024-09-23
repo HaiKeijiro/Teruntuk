@@ -67,7 +67,11 @@ function ListWebsite() {
                   <td className="p-4">{item.no_hp}</td>
                   <td className="p-4">{item.status}</td>
                   <td className="p-4 flex justify-center items-center gap-x-2">
-                    {item.isConfirmed === true ? <div>holla world</div> : (
+                    {item["isConfirmed?"] === true ? (
+                      <button className="py-1.5 px-4 bg-green-500/50 rounded-md text-white">
+                        Accepted
+                      </button>
+                    ) : (
                       <>
                         <button className="py-1.5 px-4 bg-red-500 rounded-md text-white">
                           Reject

@@ -3,35 +3,35 @@
     "domain": "nikahanryan.com",
     "nama_pemilik": "Ryan",
     "no_hp": "081234567890",
-    "status": "aktif",
+    "status": "tidak aktif",
     "isConfirmed?": false
   },
   {
-    "domain": "nikahanryan.com",
-    "nama_pemilik": "Ryan",
+    "domain": "nikahanroma.com",
+    "nama_pemilik": "Roma",
     "no_hp": "081234567890",
     "status": "aktif",
+    "isConfirmed?": true
+  },
+  {
+    "domain": "nikahanraty.com",
+    "nama_pemilik": "Raty",
+    "no_hp": "081234567890",
+    "status": "aktif",
+    "isConfirmed?": true
+  },
+  {
+    "domain": "nikahanbroza.com",
+    "nama_pemilik": "Broza",
+    "no_hp": "081234567890",
+    "status": "tidak aktif",
     "isConfirmed?": false
   },
   {
-    "domain": "nikahanryan.com",
-    "nama_pemilik": "Ryan",
+    "domain": "nikahanrima.com",
+    "nama_pemilik": "Rima",
     "no_hp": "081234567890",
-    "status": "aktif",
-    "isConfirmed?": false
-  },
-  {
-    "domain": "nikahanryan.com",
-    "nama_pemilik": "Ryan",
-    "no_hp": "081234567890",
-    "status": "aktif",
-    "isConfirmed?": false
-  },
-  {
-    "domain": "nikahanryan.com",
-    "nama_pemilik": "Ryan",
-    "no_hp": "081234567890",
-    "status": "aktif",
+    "status": "tidak aktif",
     "isConfirmed?": false
   }
 ]
