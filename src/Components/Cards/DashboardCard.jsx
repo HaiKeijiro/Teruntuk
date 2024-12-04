@@ -5,6 +5,8 @@ import EditButton from "../Buttons/EditButton";
 import MainButton from "../Buttons/MainButton";
 import OptionButton from "../Buttons/OptionButton";
 
+import ROUTES from "../../../api/routes"
+
 function DashboardCard() {
   const [menuClicked, setMenuClicked] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
@@ -50,14 +52,14 @@ function DashboardCard() {
         </div>
         <div className="w-full h-full mt-6 flex gap-x-4">
           {undanganAktif ? (
-            <EditButton label="edit" width="full" justify="center" />
+            <EditButton directTo={ROUTES.EDIT_UNDANGAN} label="edit" width="full" justify="center" />
           ) : (
             <>
-              <EditButton label="edit" width="full" />
+              <EditButton directTo={ROUTES.EDIT_UNDANGAN} label="edit" width="full" />
               <MainButton
                 label="aktifkan"
                 width="full"
-                directTo="/dashboard/aktivasi"
+                directTo={ROUTES.AKTIVASI}
               />
             </>
           )}

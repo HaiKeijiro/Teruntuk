@@ -12,6 +12,9 @@ import paymentChannel from "../../../api/payment-channel.json";
 import PaymentNotif from "../../Layouts/Notification/PaymentNotif";
 import useMultiModal from "../../Hooks/useModal";
 
+import ROUTES from "../../../api/routes";
+import { Link } from "react-router-dom";
+
 function Aktivasi() {
   const [selectedFile, setSelectedFile] = useState(null);
 
@@ -148,9 +151,12 @@ function Aktivasi() {
             </div>
 
             <div className="flex items-center justify-between gap-4">
-              <button className="py-2 px-4 w-full uppercase tracking-widest border border-black rounded-md">
+              <Link
+                to={ROUTES.DASHBOARD}
+                className="py-2 px-4 w-full uppercase tracking-widest border border-black rounded-md text-center"
+              >
                 cancel
-              </button>
+              </Link>
               <MainButton
                 label="konfirmasi"
                 width="full"

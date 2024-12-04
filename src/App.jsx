@@ -13,43 +13,33 @@ import EditUndangan from "./Pages/Dashboard/EditUndangan";
 import Aktivasi from "./Pages/Dashboard/Aktivasi";
 import ProfilePage from "./Pages/ProfilePage";
 import Admin from "./Pages/Admin/index";
-import ListPengguna from "./Layouts/Table/ListPengguna"
-import ListWebsite from "./Layouts/Table/ListWebsite"
+import ListPengguna from "./Layouts/Table/ListPengguna";
+import ListWebsite from "./Layouts/Table/ListWebsite";
 import GuessTable from "./Layouts/Table/GuessTable";
+
+import ROUTES from "../api/routes";
 
 function App() {
   return (
-    <>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="template-undangan" element={<TemplateUndangan />} />
-        <Route
-          path="template-undangan/preview-undangan"
-          element={<Preview />}
-        />
-        <Route
-          path="template-undangan/buat-undangan"
-          element={<BuatUndangan />}
-        />
-        <Route path="faq" element={<FaqPage />} />
-        <Route path="dashboard" element={<Dashboard />} />
-        <Route path="dashboard/invitation-list" element={<InvitationList />} />
-        <Route
-          path="dashboard/reservation-list"
-          element={<ReservationList />}
-        />
-        <Route path="dashboard/edit-undangan" element={<EditUndangan />} />
-        <Route path="dashboard/aktivasi" element={<Aktivasi />} />
-        <Route path="profile" element={<ProfilePage />} />
+    <Routes>
+      <Route path={ROUTES.HOME} element={<LandingPage />} />
+      <Route path={ROUTES.TEMPLATE_UNDANGAN} element={<TemplateUndangan />} />
+      <Route path={ROUTES.PREVIEW_UNDANGAN} element={<Preview />} />
+      <Route path={ROUTES.BUAT_UNDANGAN} element={<BuatUndangan />} />
+      <Route path={ROUTES.FAQ} element={<FaqPage />} />
+      <Route path={ROUTES.DASHBOARD} element={<Dashboard />} />
+      <Route path={ROUTES.INVITATION_LIST} element={<InvitationList />} />
+      <Route path={ROUTES.RESERVATION_LIST} element={<ReservationList />} />
+      <Route path={ROUTES.EDIT_UNDANGAN} element={<EditUndangan />} />
+      <Route path={ROUTES.AKTIVASI} element={<Aktivasi />} />
+      <Route path={ROUTES.PROFILE} element={<ProfilePage />} />
 
-        {/* Admin page */}
-        <Route path="admin" element={<Admin />}>
-          <Route path="list-website" element={<ListWebsite />} />
-          <Route path="list-pengguna" element={<ListPengguna />} />
-          <Route path="list-pengguna/:id" element={<GuessTable />} />
-        </Route>
-      </Routes>
-    </>
+      {/* Admin page */}
+      <Route path={ROUTES.ADMIN} element={<Admin />} />
+      <Route path={ROUTES.LIST_WEBSITE} element={<ListWebsite />} />
+      <Route path={ROUTES.LIST_PENGGUNA} element={<ListPengguna />} />
+      <Route path={ROUTES.GUESS_TABLE} element={<GuessTable />} />
+    </Routes>
   );
 }
 

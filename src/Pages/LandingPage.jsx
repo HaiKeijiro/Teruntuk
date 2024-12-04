@@ -17,6 +17,8 @@ import Testimony from "../Layouts/Testimony";
 import Photos from "../Layouts/Photos";
 import Footer from "../Layouts/Footer";
 
+import ROUTES from "../../api/routes";
+
 function LandingPage() {
   return (
     <div className="w-full">
@@ -34,7 +36,7 @@ function LandingPage() {
           <img src={Template2} alt="template.png" />
           <img src={Template3} alt="template.png" />
         </div>
-        <MainButton label={"lihat template"} />
+        <MainButton directTo={ROUTES.TEMPLATE_UNDANGAN} label={"lihat template"} />
       </div>
 
       {/* Fitur */}
